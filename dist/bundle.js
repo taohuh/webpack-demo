@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8);
+/* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
 /* harmony import */ var _icon_png__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_icon_png__WEBPACK_IMPORTED_MODULE_2__);
 
 
@@ -103,7 +103,7 @@ __webpack_require__.r(__webpack_exports__);
 function component() {
     const element = document.createElement('div');
 
-    element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.join(['Hello', 'webpack'], ' ');
+    element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.join(['Hello', 'webpack', 'สวัสดี'], ' ');
     element.classList.add('hello');
 
     const myIcon = new Image();
@@ -17296,7 +17296,7 @@ var options = {}
 options.insert = "head";
 options.singleton = false;
 
-var update = __webpack_require__(7)(content, options);
+var update = __webpack_require__(9)(content, options);
 
 if (content.locals) {
   module.exports = content.locals;
@@ -17308,8 +17308,11 @@ if (content.locals) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(6)(false);
+// Imports
+var getUrl = __webpack_require__(7);
+var ___CSS_LOADER_URL___0___ = getUrl(__webpack_require__(8));
 // Module
-exports.push([module.i, ".hello {\n    color: red;\n    /* background: url('./icon.png'); */\n}", ""]);
+exports.push([module.i, "@font-face {\n    font-family: 'Lobster', cursive;\n    src: url(" + ___CSS_LOADER_URL___0___ + ") format('ttf');\n    font-weight: 600;\n    font-style: normal;\n}\n\n.hello {\n    color: red;\n    font-family: 'Lobster', cursive;\n}", ""]);
 
 
 /***/ }),
@@ -17410,6 +17413,39 @@ function toComment(sourceMap) {
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (url, needQuotes) {
+  if (typeof url !== 'string') {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, '\\n'), "\"");
+  }
+
+  return url;
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "9406d0ab606cf8cb91c41b65556bd836.ttf";
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17697,7 +17733,7 @@ module.exports = function (list, options) {
 };
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "917da891f57f798262801bce69416b92.png";
