@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Lobster', cursive;
+    src: url(./Lobster-Regular.ttf) format('ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.hello {
+    color: red;
+    font-family: 'Lobster', cursive;
+}
