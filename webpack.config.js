@@ -1,12 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
-	entry: {
-		app: './src/index.js',
-	},
+	entry: [
+		'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+		'./src/index.js'
+	],
 	devtool: 'inline-source-map',
 	devServer: {
 		contentBase: './dist',
@@ -16,7 +18,9 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'Output Management'
-		})
+		}),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoEmitOnErrorsPlugin()
 	],
 	output: {
 		filename: '[name].bundle.js',
